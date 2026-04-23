@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Яндекс.Маршрутизация · профессиональный курс</title>
+    <!-- Современные шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f9ff;
+            background-image: radial-gradient(circle at 10% 20%, rgba(252, 184, 19, 0.03) 0%, transparent 30%);
+            color: #13294b;
+            line-height: 1.6;
+            padding: 1.5rem 1rem;
+        }
+
+        .course-wrapper {
+            max-width: 1320px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 60, 0.25), 0 0 0 1px rgba(255,255,255,0.5) inset;
+            padding: 2rem 1.5rem;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 8vw, 3.3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            background: linear-gradient(145deg, #0a2540 0%, #1e4a7a 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            padding-right: 0.5rem;
+            border-right: 6px solid #fcb813;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            font-weight: 450;
+            color: #4a668a;
+            margin-bottom: 2rem;
+            margin-top: 0.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+        .subhead .pill {
+            background: #fcb81320;
+            color: #a86903;
+            font-weight: 600;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 1rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .module {
+            margin-bottom: 2.5rem;
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 6px 14px rgba(0, 20, 40, 0.03);
+            border: 1px solid #eef3fc;
+            transition: box-shadow 0.2s;
+        }
+        .module:hover {
+            box-shadow: 0 14px 28px -8px rgba(1, 37, 78, 0.08);
+            border-color: #d9e6f5;
+        }
+
+        .module-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 18px;
+            margin-bottom: 24px;
+        }
+        .module-badge {
+            background: #0b2b4f;
+            color: white;
+            font-weight: 600;
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            box-shadow: 0 6px 12px -6px rgba(0,35,70,0.2);
+        }
+        .module-title {
+            font-size: clamp(1.5rem, 5vw, 2.1rem);
+            font-weight: 650;
+            color: #0b1f33;
+            letter-spacing: -0.01em;
+        }
+
+        .goal {
+            background: #eef4fe;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.5rem;
+            margin-bottom: 1.8rem;
+            border-left: 6px solid #2d7fc1;
+            font-weight: 470;
+            color: #10355e;
+            backdrop-filter: blur(5px);
+            font-size: clamp(0.95rem, 3vw, 1rem);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 5vw, 1.8rem);
+            font-weight: 650;
+            margin: 1.8rem 0 1rem;
+            color: #153e6f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        h2:before {
+            content: "▍";
+            color: #fcb813;
+            font-weight: 400;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: clamp(1.3rem, 4vw, 1.5rem);
+            font-weight: 620;
+            margin: 1.5rem 0 0.8rem;
+            color: #1f4e7a;
+        }
+        h4 {
+            font-weight: 650;
+            font-size: clamp(1.1rem, 3.5vw, 1.25rem);
+            margin: 1.2rem 0 0.4rem;
+            color: #245b8c;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            color: #1e3349;
+            font-size: clamp(0.95rem, 3vw, 1rem);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 1.2rem;
+            -webkit-overflow-scrolling: touch;
+        }
+        table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+        }
+        th {
+            background: #13294b;
+            color: white;
+            font-weight: 600;
+            padding: 1rem 1.2rem;
+            text-align: left;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #e2ebf6;
+            background: white;
+            vertical-align: top;
+            font-size: 0.9rem;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background: #fbfdff;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+            font-size: clamp(0.95rem, 3vw, 1rem);
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        blockquote {
+            background: #fbf4e2;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 6px solid #fcb813;
+            font-weight: 470;
+            color: #2c3c4e;
+            box-shadow: 0 4px 8px rgba(252, 184, 19, 0.05);
+            font-size: 0.95rem;
+        }
+
+        .important {
+            background: #fff3e0;
+            border-left: 6px solid #e68a2e;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1.5rem 0;
+            font-weight: 480;
+        }
+
+        .practice {
+            background: linear-gradient(105deg, #e9f2fa 0%, #f1f7fe 100%);
+            padding: 1.5rem 1.8rem;
+            border-radius: 1.8rem;
+            margin: 1.8rem 0;
+            border: 1px solid #c7ddf5;
+            box-shadow: 0 6px 0 #b0c8e2;
+        }
+        .practice strong {
+            color: #0a314d;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist {
+            background: #ffffff;
+            border: 1.5px solid #d3e2f5;
+            border-radius: 1.8rem;
+            padding: 1.5rem 1.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .test-block {
+            background: #0e2238;
+            color: #f0f6fe;
+            padding: 2rem 1.8rem;
+            border-radius: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 25px 35px -12px rgba(0,20,40,0.4);
+        }
+        .test-block h3 {
+            color: #ffda7c;
+            margin-top: 0;
+            font-size: clamp(1.5rem, 6vw, 2rem);
+            font-weight: 600;
+        }
+        .test-question {
+            background: #1b3147;
+            padding: 1.5rem 1.5rem;
+            border-radius: 1.5rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #3a5770;
+        }
+        .test-question p {
+            color: #eef3fc;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+        .test-options {
+            list-style: none;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .test-options li {
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        .test-options label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #cdddec;
+            cursor: pointer;
+            width: 100%;
+            padding: 0.2rem 0;
+            font-weight: 450;
+            transition: color 0.1s;
+        }
+        .test-options input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #6c8db0;
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.1s;
+            flex-shrink: 0;
+        }
+        .test-options input[type="radio"]:checked {
+            border-color: #fcb813;
+            background-color: #fcb813;
+            box-shadow: 0 0 0 4px rgba(252,184,19,0.2);
+        }
+        .test-options input[type="radio"]:focus {
+            outline: none;
+        }
+        .test-options label:hover {
+            color: white;
+        }
+
+        .test-actions {
+            margin-top: 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+        .btn-primary {
+            background: #fcb813;
+            color: #0a1e2e;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #b87d0a;
+            transition: all 0.1s;
+            border: 1px solid #ffd966;
+            letter-spacing: 0.3px;
+        }
+        .btn-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #b87d0a;
+        }
+        .test-result {
+            background: #1e3857;
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #e9f2fc;
+        }
+
+        .pill-metric {
+            background: #1e3a5f;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+
+        hr {
+            margin: 1.5rem 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #cbdae6, transparent);
+        }
+
+        /* Тренажёр */
+        .trainer-box {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.5rem;
+            margin: 1.5rem 0;
+            border: 2px dashed #fcb81360;
+            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.05);
+        }
+        .trainer-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #0a314d;
+        }
+        .trainer-desc {
+            margin-bottom: 1.5rem;
+            color: #2a405c;
+        }
+        .trainer-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .trainer-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-size: 1rem;
+            border: 2px solid #c7ddf5;
+            border-radius: 2rem;
+            font-family: 'Inter', sans-serif;
+            resize: vertical;
+            transition: border 0.2s;
+            background: #fafcff;
+        }
+        .trainer-input:focus {
+            border-color: #fcb813;
+            outline: none;
+            box-shadow: 0 0 0 4px #fcb81330;
+        }
+        .trainer-feedback {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px 20px;
+            margin-top: 0.5rem;
+        }
+        .char-counter {
+            background: #eef3fc;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #10355e;
+        }
+        .char-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .status-badge {
+            padding: 0.4rem 1.4rem;
+            border-radius: 30px;
+            font-weight: 600;
+            background: #e0e7ef;
+            color: #1f3a5e;
+        }
+        .status-badge.valid {
+            background: #d4edda;
+            color: #0a5c2e;
+        }
+        .trainer-btn {
+            background: #13294b;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            box-shadow: 0 8px 0 #0b1a2e;
+            border: 1px solid #2d4b70;
+            margin-right: auto;
+        }
+        .trainer-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #0b1a2e;
+        }
+        .example-comment {
+            background: #f9f2e0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 3rem;
+            font-size: 0.9rem;
+            color: #5e3f0e;
+            margin-top: 15px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 700px) {
+            body { padding: 0.8rem 0.5rem; }
+            .course-wrapper { padding: 1.5rem 1rem; border-radius: 2rem; }
+            .module { padding: 1.5rem 1.2rem; border-radius: 1.5rem; }
+            .module-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .goal { padding: 1rem 1.2rem; }
+            .trainer-box { padding: 1.5rem 1.2rem; }
+            .trainer-btn { width: 100%; text-align: center; }
+            .test-actions { flex-direction: column; align-items: stretch; }
+            .btn-primary { text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .pill-metric { display: block; margin-bottom: 6px; }
+            .subhead { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+<div class="course-wrapper">
+    <h1>Яндекс.Маршрутизация</h1>
+    <div class="subhead">
+        <span>профессиональное управление доставкой</span>
+        <span class="pill">электронный курс 2.0</span>
+    </div>
+
+    <!-- Модуль 0 -->
+    <section class="module">
+        <div class="module-header">
+            <span class="module-badge">Модуль 0</span>
+            <span class="module-title">Введение. Почему мы меняемся?</span>
+        </div>
+        <div class="goal"><strong>🎯 Цель модуля:</strong> Осознать необходимость автоматизации и новую роль менеджера доставки.</div>
+
+        <h3>0.1. Как было раньше</h3>
+        <ul>
+            <li>📱 Чат WhatsApp/Telegram: «Заказ 1234 кому?» — бесконечные уведомления.</li>
+            <li>📋 Бумажные очереди, потерянные записи, споры курьеров.</li>
+            <li>⚠️ Риск ошибки: пеший на 5 км, или 3 заказа в один рейс вручную.</li>
+        </ul>
+
+        <h3>0.2. Новая реальность: робот-диспетчер</h3>
+        <p>Яндекс.Маршрутизация (ЯМ) видит всё одновременно, учитывает пробки, строит маршруты до 3-х заказов <em>(базовое правильно, в пик строит до 5 - 6)</em>.<br>
+        <strong>Главная роль МД меняется:</strong> с распределителя на <strong>контролёра данных и сервиса</strong>.</p>
+
+        <h3>0.3. Наши метрики (цель ГУ)</h3>
+        <ul>
+            <li><span class="pill-metric">95%</span> автоматических назначений</li>
+            <li><span class="pill-metric">5%</span> ручных <em>(экстренные случаи)</em></li>
+            <li><span class="pill-metric">≥85%</span> успеваемость <em>(доставка вовремя)</em></li>
+        </ul>
+        <blockquote>💡 Мы пока не достигли этих цифр, но каждая корректная работа в системе приближает нас к цели. Необоснованное переназначение отдаляет.</blockquote>
+    </section>
+
+    <!-- Модуль 1 -->
+    <section class="module">
+        <div class="module-header">
+            <span class="module-badge">Модуль 1</span>
+            <span class="module-title">Фундамент: настройки и справочники</span>
+        </div>
+        <div class="goal">📌 Научимся проверять базу курьеров и карту зон, чтобы робот не ослеп.</div>
+
+        <h3>Урок 1.1. Курьеры: почему должность критична</h3>
+        <div class="table-responsive">
+        <table>
+            <thead><tr><th>Должность</th><th>Транспорт</th><th>Зона доставки</th><th>Ограничение</th></tr></thead>
+            <tbody>
+                <tr><td>Пеший курьер</td><td>Пешком</td><td>Только Пешая</td><td>Не поедет дальше 1-2 км</td></tr>
+                <tr><td>Велосамокат</td><td>Вело/самокат</td><td>Пешая + Велозона</td><td>Быстрее, но не в дальний район</td></tr>
+                <tr><td>Водитель <em>(личное/компании)</em></td><td>Авто</td><td>Любая зона</td><td>Может дальние заказы</td></tr>
+            </tbody>
+        </table>
+        </div>
+        <p><strong>Железные правила:</strong></p>
+        <ol>
+            <li><strong>Один человек — одна учётка.</strong> Дубли <em>(1С + Куратор)</em> удалить: 1С → обращение в HR, Куратор → обращение в SD.</li>
+            <li><strong>Должность = реальное ТС.</strong> Самокатчик в статусе «Пеший» не получит велозаказ.</li>
+        </ol>
+        <div class="practice">
+            <strong>📋 Практическое задание №1</strong>
+            Зайдите в «Курьеры» на Кухне. Проверьте 5 курьеров: совпадает ли должность с реальным транспортом? Нет ли дублей? 
+        </div>
+
+        <h3>Урок 1.2. Зоны доставки</h3>
+        <p><strong>Типы зон:</strong></p>
+        <ul>
+            <li><strong>Пешая зона</strong> — ближний радиус.</li>
+            <li><strong>Велозона</strong> — шире, для вело/авто.</li>
+            <li><strong>Автозона <em>(дефолт)</em></strong> — все полигоны.</li>
+            <li><strong>Сложная зона <em>(тест)</em></strong> — дальние, шлагбаумы. Система может задержать назначение до 15 мин, чтобы собрать маршрут.</li>
+        </ul>
+        <p><strong>🚨 Критичные ошибки:</strong></p>
+        <ul>
+            <li>❌ Есть пешие, но нет Пешей зоны — пешие стоят без заказов. <strong>→ заявка в SD с рисунком зоны.</strong></li>
+            <li>❌ Есть самокатчики, нет Велозоны — будут приходить ошибки.</li>
+        </ul>
+        <div class="practice">
+            <strong>📍 Практическое задание №2: Проверить свои зоны доставки</strong>
+            Напишите запрос на SD с просьбой проверки зон. Убедитесь, что на карте выделены: граница Пешей зоны <em>(если есть пешие курьеры)</em> и граница Велозоны <em>(если есть велокурьеры)</em>. При отсутствии — подайте заявку через SD и добавьте в запрос корректные зоны.
+        </div>
+    </section>
+
+    <!-- Модуль 2 -->
+    <section class="module">
+        <div class="module-header">
+            <span class="module-badge">Модуль 2</span>
+            <span class="module-title">Контроль → Смена → Очередь: готовность к работе</span>
+        </div>
+        <div class="goal">⏳ Разбираем ежедневный ритуал курьера и типовые ошибки старта.</div>
+
+        <h3>Урок 2.1. Смена ≠ Очередь</h3>
+	<p><strong>Контроль</strong> — допуск к смене.<br>
+        <strong>Смена</strong> — табель, учёт часов, скоро будет учёт пробега.<br>
+        <strong>Очередь</strong> — сигнал «я в ресторане и готов взять заказ».</p>
+        <p><strong>Алгоритм курьера:</strong></p>
+        <ol>
+            <li>Пройти контроль у МД.</li>
+            <li>«Начать смену» в Мчимыч <em>(реальное время)</em>.</li>
+            <li>«Встать в очередь» на главном экране.</li>
+        </ol>
+        <blockquote>💬 Курьер может быть на смене, но не в очереди <em>(обед, мойка машины)</em>. Система не должна назначать заказы в этот момент.</blockquote>
+
+        <h3>Урок 2.2. Шпаргалка по ошибкам старта</h3>
+        <div class="table-responsive">
+        <table>
+            <thead><tr><th>Симптом</th><th>Причина</th><th>Действие МД</th></tr></thead>
+            <tbody>
+                <tr><td>Неактивна «Начать смену»</td><td>Висит старый заказ</td><td>Заявка в Support</td></tr>
+                <tr><td>Смена завершилась автоматически</td><td>Забыл закрыть, прошло время</td><td>Заявка в Support, важно для будущего учёта пробега</td></tr>
+                <tr><td>«Курьер далеко»</td><td>GPS >300м</td><td>Перезагрузить гео, либо вручную через Кухню добавить</td></tr>
+                <tr><td>Много старых заказов</td><td>Ошибка процесса</td><td>Срочно в Support</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <h3>Урок 2.3. Окно «Очередь» на Кухне</h3>
+        <p>Новая Кухня → иконка «👥 Человечки». Можно удалить/добавить, видеть время входа.</p>
+        <p><strong>Приоритет:</strong> сначала штатные курьеры сети, затем партнёры <em>(Бронибой)</em>. Если партнёр первый — система пропустит и отдаст своему.</p>
+    </section>
+
+    <!-- Модуль 3 -->
+    <section class="module">
+        <div class="module-header">
+            <span class="module-badge">Модуль 3</span>
+            <span class="module-title">Как думает робот</span>
+        </div>
+        <div class="goal">🤖 Исключаем желание вмешиваться без причины. Понимаем паузы.</div>
+
+        <h3>3.1. Путь заказа</h3>
+        <ol><li><strong>«Принят»</strong> — ЯМ уже видит заказ и плановое время готовки.</li>
+        <li><strong>«Собран»</strong> — команда «СТАРТ» для поиска курьера.</li></ol>
+
+        <h3>3.2. Формула ожидания <em>(параметры могут менять по запросу МД)</em></h3>
+        <p style="background:#eef3fa; padding:1.2rem; border-radius: 2rem;"><code>Осталось до дедлайна – (время в пути + 5 мин парковка + 3 мин выдача) = запас времени для второго заказа.</code></p>
+        <p><strong>Пример:</strong> 40 мин осталось, ехать 15 мин → запас 17 мин. Робот ждёт 3 минуты, чтобы добавить второй заказ в соседний дом.</p>
+        <blockquote>✅ Если заказ «Собран» и висит 5-10 минут — это НЕ баг, а построение эффективного маршрута.</blockquote>
+
+        <h3>3.3. Динамический параметр</h3>
+        <ul><li>Максимум 3 заказа в руки.</li><li>Доназначений нет: получил 1 заказ — едет с ним.</li></ul>
+    </section>
+
+    <!-- Модуль 4 <em>(с тренажёром)</em> -->
+    <section class="module">
+        <div class="module-header">
+            <span class="module-badge">Модуль 4</span>
+            <span class="module-title">Красная кнопка: переназначение</span>
+        </div>
+        <div class="goal">🚨 Только экстренные случаи. 5% от всех назначений.</div>
+
+        <h3>4.1. Когда можно нажать?</h3>
+        <ol><li>ДТП / поломка авто.</li><li>Внезапная болезнь после назначения.</li><li>«Сгоревший» заказ <em>(до дедлайна меньше, чем время в пути +10 мин)</em>.</li></ol>
+
+        <h3>4.2. Пошаговая инструкция</h3>
+        <ol><li>Новая Кухня → карточка заказа → вкладка «Курьеры».</li>
+        <li>«Переназначить».</li>
+        <li>Выбрать причину и ввести комментарий <strong>не менее 25 символов</strong>. <em>(Система не примет «ок»)</em>.</li></ol>
+        <div class="important">✏️ Комментарий «Иванов А.А. - лопнуло колесо, заказ передан Петрову В.В. на авто» — правильный формат.</div>
+
+        <!-- ТРЕНАЖЁР -->
+        <div class="trainer-box">
+            <div class="trainer-title">🧪 Практическое задание №3 <em>(тренажёр)</em></div>
+            <div class="trainer-desc">Введите комментарий для переназначения <em>(минимум 25 символов)</em>. Система подсветит, достаточно ли данных.</div>
+            <div class="trainer-input-group">
+                <textarea id="commentInput" class="trainer-input" rows="3" placeholder="Например: Курьер Иванов А.А. - почувствовал себя плохо, заказ передан Петрову В.В."></textarea>
+                <div class="trainer-feedback">
+                    <div class="char-status">
+                        <span class="char-counter" id="charCount">0</span>
+                        <span id="statusBadge" class="status-badge">нужно ≥25</span>
+                    </div>
+                    <button id="checkTrainerBtn" class="trainer-btn">Проверить комментарий</button>
+                </div>
+                <div id="trainerMessage" class="example-comment" style="display: none;"></div>
+            </div>
+        </div>
+
+        <h3>4.3. Ручной режим <em>(только в экстренных случаях)</em></h3>
+        <p>При ручном управлении курьера надо ставить в очередь заново перед каждым заказом <em>(в автомате — один раз)</em>.</p>
+    </section>
+
+    <!-- Модуль 5 -->
+    <section class="module">
+        <div class="module-header">
+            <span class="module-badge">Модуль 5</span>
+            <span class="module-title">Управление KPI: успеваемость 85%</span>
+        </div>
+        <div class="goal">📈 Шесть рычагов влияния МД на доставку вовремя, включая контроль кухни и сборки.</div>
+
+        <h3>5.1. Что такое успеваемость</h3>
+        <p>Доля заказов, доставленных до крайнего времени слота. Цель ≥85%.</p>
+
+        <h3>5.2. Рычаг 1: Контроль времени приготовления и сборки</h3>
+        <p><strong>Как влияет:</strong> Если кухня задерживает готовность, а сборщик долго упаковывает — драгоценные минуты теряются ещё до нажатия «Собрать».<br>
+        <strong>Действие МД:</strong> Следить за плановым временем готовки. При систематических задержках — эскалировать на старшего смены. Нажимать «Собрать» немедленно после упаковки (1–2 мин).</p>
+
+        <h3>5.3. Рычаг 2: Мгновенный перевод в «Собран»</h3>
+        <p>Задержка нажатия кнопки «Собрать» после упаковки крадёт время у робота. Нажимать сразу.</p>
+
+        <h3>5.4. Рычаг 3: Дисциплина «Доставлен» у двери</h3>
+        <p>Курьер обязан закрыть заказ в приложении сразу после вручения. Иначе система считает его занятым.</p>
+
+        <h3>5.5. Рычаг 4: Сложные зоны и тип ТС</h3>
+        <p>В сложной зоне робот ждёт второй заказ до 15 мин. Не вмешивайтесь!</p>
+
+        <h3>5.6. Рычаг 5: Актуальность должности</h3>
+        <p>Автомобиль в должности «Вело» → неверный прогноз скорости → задержки.</p>
+
+        <h3>5.7. Рычаг 6: Минимум ручных переназначений</h3>
+        <p>Ручное вмешательство ломает маршрут. Доверьтесь алгоритму.</p>
+
+        <h3>5.8. Сводная таблица влияния</h3>
+        <div class="table-responsive">
+        <table>
+            <thead><tr><th>Зона контроля</th><th>Действие</th><th>Эффект</th></tr></thead>
+            <tbody>
+                <tr><td>Кухня и сборка</td><td>Контроль времени готовки, эскалация задержек</td><td>Заказ не «зависает» до старта</td></tr>
+                <tr><td>Статус «Собран»</td><td>Нажимать сразу после упаковки</td><td>+5-10% запаса времени</td></tr>
+                <tr><td>Статус «Доставлен»</td><td>Закрывать у двери</td><td>+10-15% утилизации курьера</td></tr>
+                <tr><td>Очередь / зоны</td><td>Не ставить пеших на дальние</td><td>Предотвращение опозданий</td></tr>
+                <tr><td>Данные курьеров</td><td>Должность = ТС</td><td>Корректный прогноз времени</td></tr>
+                <tr><td>Ручное вмешательство</td><td>Только экстренно</td><td>Сохранение маршрута</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </section>
+
+    <!-- Модуль 6 (с интерактивным тестом) -->
+    <section class="module">
+        <div class="module-header">
+            <span class="module-badge">Модуль 6</span>
+            <span class="module-title">Закрепление и мифы</span>
+        </div>
+        <div class="goal">🧠 Проверяем знания, развеиваем заблуждения.</div>
+
+        <h3>6.1. Разбор мифов</h3>
+        <p><strong>Миф 1:</strong> «Система тупит, заказы висят» — проверьте зоны и должности.<br>
+        <strong>Миф 2:</strong> «Я быстрее руками» — робот анализирует 10-20 заказов.<br>
+        <strong>Миф 3:</strong> «Не могу встать в очередь» — перезагрузите геолокацию.</p>
+
+        <h3>6.2. Чек-лист МД на начало смены</h3>
+        <div class="checklist">
+            <ul style="list-style-type: none; padding-left:0;">
+                <li>✅ База курьеров: должности верны? Нет дублей?</li>
+                <li>✅ Карта зон: Пешая/Велозона отображаются?</li>
+                <li>✅ Смены: все нажали «Начать смену»?</li>
+                <li>✅ Очередь: в «Человечках» есть курьеры?</li>
+                <li>✅ Нет зависших заказов в статусе «У курьера»?</li>
+                <li>✅ Кнопка «Собрать» нажимается без задержек.</li>
+                <li>✅ Контроль времени готовки: нет системных опозданий кухни.</li>
+            </ul>
+        </div>
+
+        <!-- ИТОГОВЫЙ ТЕСТ (КЛИКАБЕЛЬНЫЙ) -->
+        <div class="test-block" id="finalTest">
+            <h3>📝 Итоговый тест (11 вопросов)</h3>
+            <form id="testForm">
+                <!-- Вопрос 1 -->
+                <div class="test-question">
+                    <p>1. Курьер на личном авто в системе записан как «Пеший». Какое последствие?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q1" value="A"> А) Будет получать заказы быстрее всех</label></li>
+                        <li><label><input type="radio" name="q1" value="B"> Б) Не получит заказы в дальнюю Автозону, хотя мог бы</label></li>
+                        <li><label><input type="radio" name="q1" value="C"> В) Никаких последствий</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 2 -->
+                <div class="test-question">
+                    <p>2. Заказ в статусе «Собран» уже 12 минут, до дедлайна час. Ваши действия?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q2" value="A"> А) Срочно переназначить</label></li>
+                        <li><label><input type="radio" name="q2" value="B"> Б) Ничего не делать, наблюдать</label></li>
+                        <li><label><input type="radio" name="q2" value="C"> В) Позвонить курьеру забрать без назначения</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 3 -->
+                <div class="test-question">
+                    <p>3. Минимальный объём комментария при ручном переназначении?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q3" value="A"> А) 1 слово</label></li>
+                        <li><label><input type="radio" name="q3" value="B"> Б) Не менее 25 символов</label></li>
+                        <li><label><input type="radio" name="q3" value="C"> В) Комментарий не обязателен</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 4 -->
+                <div class="test-question">
+                    <p>4. Что сильнее всего ворует время у доставки?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q4" value="A"> А) Пробки</label></li>
+                        <li><label><input type="radio" name="q4" value="B"> Б) Задержка нажатия «Собрать» после упаковки</label></li>
+                        <li><label><input type="radio" name="q4" value="C"> В) Медленная работа курьера</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 5 -->
+                <div class="test-question">
+                    <p>5. Курьер доставил заказ, но не нажал «Доставлен». Что произойдёт?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q5" value="A"> А) Ничего страшного</label></li>
+                        <li><label><input type="radio" name="q5" value="B"> Б) Система считает его занятым, новые заказы не придут</label></li>
+                        <li><label><input type="radio" name="q5" value="C"> В) Заказ закроется автоматически через час</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 6 -->
+                <div class="test-question">
+                    <p>6. Ситуация: в очереди 5 пеших курьеров, а заказ в дальнюю Сложную зону. Робот не назначает. Почему?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q6" value="A"> А) Сбой системы</label></li>
+                        <li><label><input type="radio" name="q6" value="B"> Б) Ждёт появления водителя или собирает маршрут</label></li>
+                        <li><label><input type="radio" name="q6" value="C"> В) Нужно переназначить вручную</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 7 -->
+                <div class="test-question">
+                    <p>7. Какой процент ручных назначений является целью ГУ?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q7" value="A"> А) 15%</label></li>
+                        <li><label><input type="radio" name="q7" value="B"> Б) 5%</label></li>
+                        <li><label><input type="radio" name="q7" value="C"> В) 20%</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 8 -->
+                <div class="test-question">
+                    <p>8. Курьер не может встать в очередь, хотя находится в ресторане. Что проверить в первую очередь?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q8" value="A"> А) Версию приложения</label></li>
+                        <li><label><input type="radio" name="q8" value="B"> Б) Геолокацию (GPS) и расстояние до ресторана</label></li>
+                        <li><label><input type="radio" name="q8" value="C"> В) Наличие свободных заказов</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 9 -->
+                <div class="test-question">
+                    <p>9. Зачем система требует 25+ символов при переназначении?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q9" value="A"> А) Чтобы усложнить жизнь МД</label></li>
+                        <li><label><input type="radio" name="q9" value="B"> Б) Для сбора аналитики и осознанного вмешательства</label></li>
+                        <li><label><input type="radio" name="q9" value="C"> В) Это баг интерфейса</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 10 -->
+                <div class="test-question">
+                    <p>10. Ситуация: курьер-водитель пересел на велосипед. Что должен сделать МД?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q10" value="A"> А) Ничего, робот сам поймёт</label></li>
+                        <li><label><input type="radio" name="q10" value="B"> Б) Инициировать смену должности в системе (HR/SD)</label></li>
+                        <li><label><input type="radio" name="q10" value="C"> В) Просто ставить его в очередь вручную</label></li>
+                    </ul>
+                </div>
+                <!-- Вопрос 11 -->
+                <div class="test-question">
+                    <p>11. В чём главная выгода автоматической маршрутизации для МД?</p>
+                    <ul class="test-options">
+                        <li><label><input type="radio" name="q11" value="A"> А) Меньше работы, можно отдыхать</label></li>
+                        <li><label><input type="radio" name="q11" value="B"> Б) Снижение холостого пробега, рост успеваемости, меньше рутины</label></li>
+                        <li><label><input type="radio" name="q11" value="C"> В) Увеличение количества заказов на курьера</label></li>
+                    </ul>
+                </div>
+            </form>
+            <div class="test-actions">
+                <button class="btn-primary" id="checkTestBtn">Проверить ответы</button>
+                <div id="testResult" class="test-result">Выберите ответы</div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <p style="text-align:right; color:#5a7794;">© Тануки Тех · Версия 2.0 · Маршрутизация</p>
+</div>
+
+<!-- Скрипты: тренажёр + проверка теста -->
+<script>
+    (function() {
+        // ----- ТРЕНАЖЁР (комментарий) -----
+        const input = document.getElementById('commentInput');
+        const charCountSpan = document.getElementById('charCount');
+        const statusBadge = document.getElementById('statusBadge');
+        const checkBtn = document.getElementById('checkTrainerBtn');
+        const messageDiv = document.getElementById('trainerMessage');
+
+        function updateFeedback() {
+            const text = input.value;
+            const len = text.length;
+            charCountSpan.textContent = len;
+            if (len >= 25) {
+                statusBadge.textContent = '✓ достаточно';
+                statusBadge.classList.add('valid');
+            } else {
+                statusBadge.textContent = 'нужно ≥25';
+                statusBadge.classList.remove('valid');
+            }
+        }
+        function checkComment() {
+            const text = input.value.trim();
+            const len = text.length;
+            if (len === 0) {
+                messageDiv.style.display = 'block';
+                messageDiv.textContent = '⛔ Введите комментарий.';
+                return;
+            }
+            if (len < 25) {
+                messageDiv.style.display = 'block';
+                messageDiv.textContent = `⚠️ Слишком коротко (${len} симв.). Добавьте ещё ${25 - len}. Пример: "Курьер Иванов А.А. - заболел, передал Петрову."`;
+            } else {
+                messageDiv.style.display = 'block';
+                messageDiv.textContent = '✅ Отлично! Комментарий принят (длина ≥25). В реальной системе такое описание пройдёт.';
+            }
+        }
+        input.addEventListener('input', updateFeedback);
+        checkBtn.addEventListener('click', checkComment);
+        updateFeedback();
+
+        // ----- ИТОГОВЫЙ ТЕСТ (проверка) -----
+        const correctAnswers = {
+            q1: 'B',
+            q2: 'B',
+            q3: 'B',
+            q4: 'B',
+            q5: 'B',
+            q6: 'B',
+            q7: 'B',
+            q8: 'B',
+            q9: 'B',
+            q10: 'B',
+            q11: 'B'
+        };
+
+        const testForm = document.getElementById('testForm');
+        const resultDiv = document.getElementById('testResult');
+        const checkTestBtn = document.getElementById('checkTestBtn');
+
+        checkTestBtn.addEventListener('click', function() {
+            let score = 0;
+            let allAnswered = true;
+
+            for (let i = 1; i <= 11; i++) {
+                const name = 'q' + i;
+                const radios = document.getElementsByName(name);
+                let selectedValue = null;
+                for (let radio of radios) {
+                    if (radio.checked) {
+                        selectedValue = radio.value;
+                        break;
+                    }
+                }
+                if (!selectedValue) {
+                    allAnswered = false;
+                } else if (selectedValue === correctAnswers[name]) {
+                    score++;
+                }
+            }
+
+            if (!allAnswered) {
+                resultDiv.textContent = '⚠️ Ответьте на все вопросы.';
+                return;
+            }
+
+            const percent = Math.round((score / 11) * 100);
+            resultDiv.textContent = `✅ Ваш результат: ${score} из 11 (${percent}%). ${score >= 9 ? 'Отлично!' : (score >= 7 ? 'Хорошо, но повторите сложные моменты.' : 'Рекомендуется пересмотреть модули.')}`;
+        });
+
+    })();
+</script>
+
+</body>
+</html>
