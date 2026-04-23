@@ -2,12 +2,25 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Яндекс.Маршрутизация · профессиональный курс</title>
     <!-- Современные шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108734713', 'ym');
+
+        ym(108734713, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108734713" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <style>
         * {
             margin: 0;
@@ -38,32 +51,32 @@
         }
 
         h1 {
-    font-size: clamp(2.2rem, 7vw, 3.3rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.4rem;
-    background: linear-gradient(145deg, #0a2540 0%, #1e4a7a 90%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    display: inline-block;
-    padding-right: 0.5rem;
-    border-right: 6px solid #fcb813;
-    line-height: 1.2;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    max-width: 100%;
-}
+            font-size: clamp(2.2rem, 7vw, 3.3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            background: linear-gradient(145deg, #0a2540 0%, #1e4a7a 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            padding-right: 0.5rem;
+            border-right: 6px solid #fcb813;
+            line-height: 1.2;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            max-width: 100%;
+        }
 
-/* Дополнительное правило для мобильных устройств */
-@media (max-width: 700px) {
-    h1 {
-        font-size: clamp(2rem, 10vw, 2.8rem);
-        padding-right: 0.3rem;
-        border-right: 4px solid #fcb813;
-    }
-}
+        /* Дополнительное правило для мобильных устройств */
+        @media (max-width: 700px) {
+            h1 {
+                font-size: clamp(2rem, 10vw, 2.8rem);
+                padding-right: 0.3rem;
+                border-right: 4px solid #fcb813;
+            }
+        }
 
         .subhead {
             font-size: clamp(1rem, 4vw, 1.25rem);
@@ -648,7 +661,7 @@
         <ul><li>Максимум 3 заказа в руки.</li><li>Доназначений нет: получил 1 заказ — едет с ним.</li></ul>
     </section>
 
-    <!-- Модуль 4 <em>(с тренажёром)</em> -->
+    <!-- Модуль 4 (с тренажёром) -->
     <section class="module">
         <div class="module-header">
             <span class="module-badge">Модуль 4</span>
@@ -676,7 +689,7 @@
                         <span class="char-counter" id="charCount">0</span>
                         <span id="statusBadge" class="status-badge">нужно ≥25</span>
                     </div>
-                    <button id="checkTrainerBtn" class="trainer-btn">Проверить комментарий</button>
+                    <button id="checkTrainerBtn" class="trainer-btn" onclick="ym(108734713, 'reachGoal', 'trainer_click');">Проверить комментарий</button>
                 </div>
                 <div id="trainerMessage" class="example-comment" style="display: none;"></div>
             </div>
@@ -863,7 +876,7 @@
                 </div>
             </form>
             <div class="test-actions">
-                <button class="btn-primary" id="checkTestBtn">Проверить ответы</button>
+                <button class="btn-primary" id="checkTestBtn" onclick="ym(108734713, 'reachGoal', 'test_completed');">Проверить ответы</button>
                 <div id="testResult" class="test-result">Выберите ответы</div>
             </div>
         </div>
