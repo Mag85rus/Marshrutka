@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover>
     <title>Яндекс.Маршрутизация · профессиональный курс</title>
     <!-- Современные шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,19 +38,32 @@
         }
 
         h1 {
-            font-size: clamp(2.2rem, 8vw, 3.3rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.4rem;
-            background: linear-gradient(145deg, #0a2540 0%, #1e4a7a 90%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            padding-right: 0.5rem;
-            border-right: 6px solid #fcb813;
-            line-height: 1.2;
-        }
+    font-size: clamp(2.2rem, 7vw, 3.3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+    background: linear-gradient(145deg, #0a2540 0%, #1e4a7a 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    padding-right: 0.5rem;
+    border-right: 6px solid #fcb813;
+    line-height: 1.2;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+}
+
+/* Дополнительное правило для мобильных устройств */
+@media (max-width: 700px) {
+    h1 {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+        padding-right: 0.3rem;
+        border-right: 4px solid #fcb813;
+    }
+}
 
         .subhead {
             font-size: clamp(1rem, 4vw, 1.25rem);
